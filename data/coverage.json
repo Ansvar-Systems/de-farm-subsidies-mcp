@@ -1,0 +1,22 @@
+{
+  "mcp_name": "Germany Farm Subsidies MCP",
+  "jurisdiction": "DE",
+  "build_date": "2026-04-04",
+  "status": "populated",
+  "schemes": 12,
+  "scheme_options": 26,
+  "cross_compliance_requirements": 23,
+  "search_index_entries": 21,
+  "total_rows": 82,
+  "data_sources": [
+    "BLE (Bundesanstalt fuer Landwirtschaft und Ernaehrung)",
+    "BMEL (Bundesministerium fuer Ernaehrung und Landwirtschaft)",
+    "GAP-Strategieplan Deutschland 2023-2027",
+    "InVeKoS (Integriertes Verwaltungs- und Kontrollsystem)",
+    "Laender-Zahlstellen und Agrarbehoerden",
+    "GAK-Rahmenplan (Gemeinschaftsaufgabe Agrarstruktur und Kuestenschutz)",
+    "EU-Verordnungen 2021/2115, 2021/2116",
+    "Deutscher Bauernverband / Landwirtschaftskammern",
+    "Duengeverordnung (DueV) / Pflanzenschutzgesetz (PflSchG)"
+  ]
+}

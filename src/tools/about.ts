@@ -5,11 +5,17 @@ export function handleAbout() {
   return {
     name: 'Germany Farm Subsidies MCP',
     description:
-      'UK farm subsidy schemes -- Sustainable Farming Incentive (SFI) options, eligibility criteria, ' +
-      'payment rates, and cross-compliance requirements (GAEC/SMR). Based on DEFRA and RPA publications.',
+      'Deutsche GAP-Foerderprogramme -- Einkommensgrundstuetzung, Umverteilungspraemie, Junglandwirtepraemie, ' +
+      'Oeko-Regelungen (OR1-OR7), Konditionalitaet (GLOZ/GAB), gekoppelte Stuetzung, AUKM, AGZ und AFP. ' +
+      'Basierend auf dem GAP-Strategieplan Deutschland 2023-2027, BLE und BMEL-Veroeffentlichungen.',
     version: '0.1.0',
     jurisdiction: [...SUPPORTED_JURISDICTIONS],
-    data_sources: ['DEFRA SFI Guidance', 'RPA Scheme Manuals', 'Cross-compliance GAEC/SMR'],
+    data_sources: [
+      'GAP-Strategieplan Deutschland 2023-2027',
+      'BLE (Bundesanstalt fuer Landwirtschaft und Ernaehrung)',
+      'BMEL (Bundesministerium fuer Ernaehrung und Landwirtschaft)',
+      'Laender-Agrarbehoerden und Zahlstellen',
+    ],
     tools_count: 10,
     links: {
       homepage: 'https://ansvar.eu/open-agriculture',

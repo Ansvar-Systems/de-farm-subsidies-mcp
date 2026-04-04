@@ -8,18 +8,18 @@ export interface Meta {
 }
 
 const DISCLAIMER =
-  'This data is provided for informational purposes only. It does not constitute professional ' +
-  'agricultural or financial advice. Subsidy schemes, payment rates, and eligibility criteria ' +
-  'change -- always check the latest DEFRA SFI guidance and RPA scheme manuals before making ' +
-  'applications or land management decisions. Data sourced from UK government publications ' +
-  'under Open Government Licence.';
+  'Diese Daten dienen ausschliesslich zu Informationszwecken. Sie stellen keine professionelle ' +
+  'landwirtschaftliche, finanzielle oder rechtliche Beratung dar. Foerderprogramme, Praemiensaetze ' +
+  'und Foerdervoraussetzungen aendern sich -- pruefen Sie stets die aktuellen Informationen von ' +
+  'BLE, BMEL und den Laender-Agrarbehoerden, bevor Sie Antraege stellen oder Bewirtschaftungsentscheidungen ' +
+  'treffen. Datenquellen: amtliche Veroeffentlichungen zum GAP-Strategieplan Deutschland 2023-2027.';
 
 export function buildMeta(overrides?: Partial<Meta>): Meta {
   return {
     disclaimer: DISCLAIMER,
     data_age: overrides?.data_age ?? 'unknown',
-    source_url: overrides?.source_url ?? 'https://www.gov.uk/government/collections/sustainable-farming-incentive-guidance',
-    copyright: 'Data: Crown Copyright. Server: Apache-2.0 Ansvar Systems.',
+    source_url: overrides?.source_url ?? 'https://www.bmel.de/DE/themen/landwirtschaft/eu-agrarpolitik-und-foerderung/gap/gap-strategieplan.html',
+    copyright: 'Daten: Amtliche Veroeffentlichungen BMEL/BLE. Server: Apache-2.0 Ansvar Systems.',
     server: 'de-farm-subsidies-mcp',
     version: '0.1.0',
     ...overrides,

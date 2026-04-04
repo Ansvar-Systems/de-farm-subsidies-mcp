@@ -18,20 +18,19 @@ describe('get_payment_rates tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns all SFI payment rates', () => {
-    const result = handleGetPaymentRates(db, { scheme_id: 'sustainable-farming-incentive' });
-    expect(result).toHaveProperty('options_count', 2);
+  test('returns all EGS payment rates', () => {
+    const result = handleGetPaymentRates(db, { scheme_id: 'einkommensgrundstuetzung' });
+    expect(result).toHaveProperty('options_count', 1);
     const options = (result as { options: { payment_rate: number }[] }).options;
-    expect(options[0].payment_rate).toBe(5.80);
-    expect(options[1].payment_rate).toBe(129.00);
+    expect(options[0].payment_rate).toBe(156.00);
   });
 
   test('returns single option when option_id provided', () => {
-    const result = handleGetPaymentRates(db, { scheme_id: 'sustainable-farming-incentive', option_id: 'sam1' });
+    const result = handleGetPaymentRates(db, { scheme_id: 'einkommensgrundstuetzung', option_id: 'egs-basis' });
     expect(result).toHaveProperty('options_count', 1);
     const options = (result as { options: { payment_rate: number; payment_unit: string }[] }).options;
-    expect(options[0].payment_rate).toBe(5.80);
-    expect(options[0].payment_unit).toBe('GBP/ha');
+    expect(options[0].payment_rate).toBe(156.00);
+    expect(options[0].payment_unit).toBe('EUR/ha');
   });
 
   test('returns not_found for unknown scheme', () => {
@@ -40,7 +39,7 @@ describe('get_payment_rates tool', () => {
   });
 
   test('returns not_found for unknown option in valid scheme', () => {
-    const result = handleGetPaymentRates(db, { scheme_id: 'sustainable-farming-incentive', option_id: 'sam99' });
+    const result = handleGetPaymentRates(db, { scheme_id: 'einkommensgrundstuetzung', option_id: 'egs-99' });
     expect(result).toHaveProperty('error', 'not_found');
   });
 });

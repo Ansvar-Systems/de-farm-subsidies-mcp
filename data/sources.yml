@@ -3,20 +3,62 @@ mcp_name: "Germany Farm Subsidies MCP"
 category: "domain_intelligence"
 
 sources:
-  # TODO: Add Germany-specific data sources here.
-  # Example:
-  # - name: "National Agriculture Advisory Service"
-  #   authority: "Ministry of Agriculture"
-  #   official_url: "https://example.gov.de/agriculture"
-  #   retrieval_method: "HTML_SCRAPE"
-  #   format: "HTML"
-  #   authentication: "none"
-  #   update_frequency: "annual"
-  #   license:
-  #     type: "Open Government Licence"
-  #     url: "https://example.gov.de/licence"
-  #   coverage:
-  #     scope: "National agricultural data"
-  #   languages:
-  #     - "de"
-  []
+  - name: "GAP-Strategieplan Deutschland 2023-2027"
+    authority: "BMEL (Bundesministerium fuer Ernaehrung und Landwirtschaft)"
+    official_url: "https://www.bmel.de/DE/themen/landwirtschaft/eu-agrarpolitik-und-foerderung/gap/gap-strategieplan.html"
+    retrieval_method: "PDF_EXTRACT"
+    format: "PDF"
+    authentication: "none"
+    update_frequency: "annual"
+    license:
+      type: "Amtliche Veroeffentlichung"
+      url: "https://www.bmel.de"
+    coverage:
+      scope: "Direktzahlungen, Oeko-Regelungen, ELER-Massnahmen, Konditionalitaet"
+    languages:
+      - "de"
+
+  - name: "BLE Foerderinformationen"
+    authority: "BLE (Bundesanstalt fuer Landwirtschaft und Ernaehrung)"
+    official_url: "https://www.ble.de/DE/Themen/Landwirtschaft/landwirtschaft_node.html"
+    retrieval_method: "HTML_SCRAPE"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "quarterly"
+    license:
+      type: "Amtliche Veroeffentlichung"
+      url: "https://www.ble.de"
+    coverage:
+      scope: "Bundesprogramme, InVeKoS-Antragstellung, Zahlungsverfahren"
+    languages:
+      - "de"
+
+  - name: "GAK-Rahmenplan"
+    authority: "BMEL / Laender"
+    official_url: "https://www.bmel.de/DE/themen/laendliche-regionen/foerderung/gak/gak_node.html"
+    retrieval_method: "PDF_EXTRACT"
+    format: "PDF"
+    authentication: "none"
+    update_frequency: "annual"
+    license:
+      type: "Amtliche Veroeffentlichung"
+      url: "https://www.bmel.de"
+    coverage:
+      scope: "AFP, AUKM, AGZ, Foerdersaetze nach Bundesland"
+    languages:
+      - "de"
+
+  - name: "Konditionalitaet (GLOZ/GAB)"
+    authority: "BMEL / BLE / Laender-Kontrollbehoerden"
+    official_url: "https://www.bmel.de/DE/themen/landwirtschaft/eu-agrarpolitik-und-foerderung/gap/konditionalitaet.html"
+    retrieval_method: "HTML_SCRAPE"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "annual"
+    license:
+      type: "Amtliche Veroeffentlichung"
+      url: "https://www.bmel.de"
+    coverage:
+      scope: "GLOZ 1-9, GAB 1-11, Sanktionssystem, Kontrollverfahren"
+    languages:
+      - "de"

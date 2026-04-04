@@ -19,13 +19,13 @@ describe('get_cross_compliance tool', () => {
   });
 
   test('returns requirement by ID', () => {
-    const result = handleGetCrossCompliance(db, { requirement_id: 'gaec-1' });
-    expect(result).toHaveProperty('requirement', 'Establishment of buffer strips along water courses');
-    expect(result).toHaveProperty('category', 'GAEC');
+    const result = handleGetCrossCompliance(db, { requirement_id: 'gloz-4' });
+    expect(result).toHaveProperty('requirement', 'Pufferstreifen entlang von Gewaessern');
+    expect(result).toHaveProperty('category', 'GLOZ');
   });
 
   test('searches by topic', () => {
-    const result = handleGetCrossCompliance(db, { topic: 'water' });
+    const result = handleGetCrossCompliance(db, { topic: 'Nitrat' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
@@ -36,7 +36,7 @@ describe('get_cross_compliance tool', () => {
   });
 
   test('returns not_found for unknown requirement', () => {
-    const result = handleGetCrossCompliance(db, { requirement_id: 'gaec-99' });
+    const result = handleGetCrossCompliance(db, { requirement_id: 'gloz-99' });
     expect(result).toHaveProperty('error', 'not_found');
   });
 });

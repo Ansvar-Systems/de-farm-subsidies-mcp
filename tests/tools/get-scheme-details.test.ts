@@ -18,11 +18,11 @@ describe('get_scheme_details tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns SFI scheme with options', () => {
-    const result = handleGetSchemeDetails(db, { scheme_id: 'sustainable-farming-incentive' });
-    expect(result).toHaveProperty('name', 'Sustainable Farming Incentive');
-    expect(result).toHaveProperty('scheme_type', 'agri-environment');
-    expect((result as { options_count: number }).options_count).toBe(2);
+  test('returns EGS scheme with options', () => {
+    const result = handleGetSchemeDetails(db, { scheme_id: 'einkommensgrundstuetzung' });
+    expect(result).toHaveProperty('name', 'Einkommensgrundstuetzung (EGS)');
+    expect(result).toHaveProperty('scheme_type', 'income-support');
+    expect((result as { options_count: number }).options_count).toBe(1);
     expect(result).toHaveProperty('_meta');
   });
 
@@ -32,13 +32,13 @@ describe('get_scheme_details tool', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleGetSchemeDetails(db, { scheme_id: 'sustainable-farming-incentive', jurisdiction: 'FR' });
+    const result = handleGetSchemeDetails(db, { scheme_id: 'einkommensgrundstuetzung', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 
-  test('returns countryside stewardship scheme', () => {
-    const result = handleGetSchemeDetails(db, { scheme_id: 'countryside-stewardship' });
-    expect(result).toHaveProperty('name', 'Countryside Stewardship');
-    expect((result as { options_count: number }).options_count).toBe(1);
+  test('returns oeko-regelungen scheme', () => {
+    const result = handleGetSchemeDetails(db, { scheme_id: 'oeko-regelungen' });
+    expect(result).toHaveProperty('name', 'Oeko-Regelungen (Eco-Schemes)');
+    expect((result as { options_count: number }).options_count).toBe(2);
   });
 });

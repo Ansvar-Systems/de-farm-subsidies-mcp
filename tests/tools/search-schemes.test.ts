@@ -18,19 +18,19 @@ describe('search_schemes tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns results for soil query', () => {
-    const result = handleSearchSchemes(db, { query: 'soil' });
+  test('returns results for Direktzahlung query', () => {
+    const result = handleSearchSchemes(db, { query: 'Direktzahlung' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
   test('respects scheme_type filter', () => {
-    const result = handleSearchSchemes(db, { query: 'soil', scheme_type: 'agri-environment' });
+    const result = handleSearchSchemes(db, { query: 'Oeko', scheme_type: 'agri-environment' });
     expect((result as { results: unknown[] }).results.length).toBeGreaterThan(0);
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleSearchSchemes(db, { query: 'soil', jurisdiction: 'FR' });
+    const result = handleSearchSchemes(db, { query: 'Direktzahlung', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 });

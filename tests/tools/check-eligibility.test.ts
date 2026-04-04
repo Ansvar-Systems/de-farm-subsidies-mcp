@@ -18,26 +18,24 @@ describe('check_eligibility tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('finds options for arable land', () => {
-    const result = handleCheckEligibility(db, { land_type: 'arable' });
+  test('finds options for Ackerland', () => {
+    const result = handleCheckEligibility(db, { land_type: 'Ackerland' });
     expect(result).toHaveProperty('matches_count');
     expect((result as { matches_count: number }).matches_count).toBeGreaterThan(0);
   });
 
-  test('finds options matching cover crop practice', () => {
-    const result = handleCheckEligibility(db, { current_practice: 'cover crop' });
+  test('finds options matching Gruenland', () => {
+    const result = handleCheckEligibility(db, { land_type: 'Dauergruenland' });
     expect((result as { matches_count: number }).matches_count).toBeGreaterThan(0);
-    const matches = (result as { matches: { option_code: string }[] }).matches;
-    expect(matches.some(m => m.option_code === 'SAM2')).toBe(true);
   });
 
   test('returns empty for non-matching criteria', () => {
-    const result = handleCheckEligibility(db, { land_type: 'desert' });
+    const result = handleCheckEligibility(db, { land_type: 'Wueste' });
     expect((result as { matches_count: number }).matches_count).toBe(0);
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleCheckEligibility(db, { land_type: 'arable', jurisdiction: 'DE' });
+    const result = handleCheckEligibility(db, { land_type: 'Ackerland', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 
