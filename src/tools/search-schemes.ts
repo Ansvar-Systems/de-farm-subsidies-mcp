@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import { ftsSearch, type Database } from '../db.js';
 
@@ -31,5 +32,11 @@ export function handleSearchSchemes(db: Database, args: SearchArgs) {
       relevance_rank: r.rank,
     })),
     _meta: buildMeta(),
+    _citation: buildCitation(
+      `Farm subsidy schemes: ${args.query}`,
+      `Search results for "${args.query}"`,
+      'search_schemes',
+      { query: args.query },
+    ),
   };
 }
