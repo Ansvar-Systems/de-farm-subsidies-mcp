@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import { ftsSearch, type Database } from '../db.js';
 
@@ -26,5 +27,11 @@ export function handleSearchApplicationGuidance(db: Database, args: GuidanceSear
       relevance_rank: r.rank,
     })),
     _meta: buildMeta(),
+    _citation: buildCitation(
+      `Application guidance: ${args.query}`,
+      `Application guidance for "${args.query}"`,
+      'search_application_guidance',
+      { query: args.query },
+    ),
   };
 }
